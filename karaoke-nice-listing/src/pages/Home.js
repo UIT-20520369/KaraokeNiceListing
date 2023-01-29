@@ -1,14 +1,31 @@
-import React from "react";
+import React ,{useEffect, useState}from "react";
 // import Swiper JS
 import { Swiper, SwiperSlide } from "swiper/react";
 import {MdOutlinePerson,MdOutlineRoundedCorner} from "react-icons/md";
+import { useQuery, gql } from '@apollo/client';
 // import Swiper styles
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+
+const GET_ROOMTYPE = gql`
+    query getRoomType{
+      roomTypes{
+        id,
+        name,
+        guests,
+        price,
+        areas,
+        thumnail
+      }
+    }
+`;
 const Home = () => {
+  const { loading, error, data } = useQuery(GET_ROOMTYPE);
+  const rooms =data?.roomTypes;
+  console.log(rooms)
   return (
     <div className="relative">
       <Swiper
@@ -79,26 +96,27 @@ const Home = () => {
       </div>
       <div className="w-[100%] max-h-[600px] flex items-center justify-center">
         <div className="grid grid-cols-3 w-[90%] h-[80%] gap-5">
-          <div className="w-[100%]">
+          {
+            rooms && rooms.map(room =>(<div className="w-[100%]">
             <div className="relative w-[100%]">
               <div className="w-[100%] relative">
                 <img
                   className="w-[100%]"
-                  src="http://avatarkaraoke.com/wp-content/uploads/2022/03/room-5-1024x664.jpeg"
+                  src={room?.thumnail ? room.thumnail :"http://avatarkaraoke.com/wp-content/uploads/2022/03/room-1-1024x664.jpeg"}
                 />
                 <div className="absolute top-7 right-0 w-[90%] h-[80%]">
                     <div className="absolute w-[140px] h-[32px] text-center bg-[#c19b76] text-white text-xs top-0 right-0 flex items-center justify-center">
-                        <p>F R O M 23 $</p>
+                        <p>F R O M {room.price}</p>
                     </div>
                     <div className="absolute bottom-0 left-0">
                         <div className="">
                             <div className=" text-[#fff] text-[20px]">
-                                <p>Double Room</p>
+                                <p>{room.name}</p>
                             </div>
                             <div className="flex items-center text-[#fff] text-[14px] font-normal">
-                                <div className="flex items-center"><MdOutlinePerson className="h-[30px] w-[30px]" /><p>2 Guest</p></div>
+                                <div className="flex items-center"><MdOutlinePerson className="h-[30px] w-[30px]" /><p>{room.guests} Guest</p></div>
                                 <div className="mx-5"></div>
-                                <div className="flex items-center"><MdOutlineRoundedCorner className="h-[30px] w-[30px]"/><p>23FT</p></div>
+                                <div className="flex items-center"><MdOutlineRoundedCorner className="h-[30px] w-[30px]"/><p>{room.areas}FT</p></div>
                             </div>
                         </div>
 
@@ -106,147 +124,8 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="w-[100%]">
-            <div className="relative w-[100%]">
-              <div className="w-[100%] relative">
-                <img
-                  className="w-[100%]"
-                  src="http://avatarkaraoke.com/wp-content/uploads/2022/03/room-5-1024x664.jpeg"
-                />
-                <div className="absolute top-7 right-0 w-[90%] h-[80%]">
-                    <div className="absolute w-[140px] h-[32px] text-center bg-[#c19b76] text-white text-xs top-0 right-0 flex items-center justify-center">
-                        <p>F R O M 23 $</p>
-                    </div>
-                    <div className="absolute bottom-0 left-0">
-                        <div className="">
-                            <div className=" text-[#fff] text-[20px]">
-                                <p>Double Room</p>
-                            </div>
-                            <div className="flex items-center text-[#fff] text-[14px] font-normal">
-                                <div className="flex items-center"><MdOutlinePerson className="h-[30px] w-[30px]" /><p>2 Guest</p></div>
-                                <div className="mx-5"></div>
-                                <div className="flex items-center"><MdOutlineRoundedCorner className="h-[30px] w-[30px]"/><p>23FT</p></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-[100%]">
-            <div className="relative w-[100%]">
-              <div className="w-[100%] relative">
-                <img
-                  className="w-[100%]"
-                  src="http://avatarkaraoke.com/wp-content/uploads/2022/03/room-5-1024x664.jpeg"
-                />
-                <div className="absolute top-7 right-0 w-[90%] h-[80%]">
-                    <div className="absolute w-[140px] h-[32px] text-center bg-[#c19b76] text-white text-xs top-0 right-0 flex items-center justify-center">
-                        <p>F R O M 23 $</p>
-                    </div>
-                    <div className="absolute bottom-0 left-0">
-                        <div className="">
-                            <div className=" text-[#fff] text-[20px]">
-                                <p>Double Room</p>
-                            </div>
-                            <div className="flex items-center text-[#fff] text-[14px] font-normal">
-                                <div className="flex items-center"><MdOutlinePerson className="h-[30px] w-[30px]" /><p>2 Guest</p></div>
-                                <div className="mx-5"></div>
-                                <div className="flex items-center"><MdOutlineRoundedCorner className="h-[30px] w-[30px]"/><p>23FT</p></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-[100%]">
-            <div className="relative w-[100%]">
-              <div className="w-[100%] relative">
-                <img
-                  className="w-[100%]"
-                  src="http://avatarkaraoke.com/wp-content/uploads/2022/03/room-5-1024x664.jpeg"
-                />
-                <div className="absolute top-7 right-0 w-[90%] h-[80%]">
-                    <div className="absolute w-[140px] h-[32px] text-center bg-[#c19b76] text-white text-xs top-0 right-0 flex items-center justify-center">
-                        <p>F R O M 23 $</p>
-                    </div>
-                    <div className="absolute bottom-0 left-0">
-                        <div className="">
-                            <div className=" text-[#fff] text-[20px]">
-                                <p>Double Room</p>
-                            </div>
-                            <div className="flex items-center text-[#fff] text-[14px] font-normal">
-                                <div className="flex items-center"><MdOutlinePerson className="h-[30px] w-[30px]" /><p>2 Guest</p></div>
-                                <div className="mx-5"></div>
-                                <div className="flex items-center"><MdOutlineRoundedCorner className="h-[30px] w-[30px]"/><p>23FT</p></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-[100%]">
-            <div className="relative w-[100%]">
-              <div className="w-[100%] relative">
-                <img
-                  className="w-[100%]"
-                  src="http://avatarkaraoke.com/wp-content/uploads/2022/03/room-5-1024x664.jpeg"
-                />
-                <div className="absolute top-7 right-0 w-[90%] h-[80%]">
-                    <div className="absolute w-[140px] h-[32px] text-center bg-[#c19b76] text-white text-xs top-0 right-0 flex items-center justify-center">
-                        <p>F R O M 23 $</p>
-                    </div>
-                    <div className="absolute bottom-0 left-0">
-                        <div className="">
-                            <div className=" text-[#fff] text-[20px]">
-                                <p>Double Room</p>
-                            </div>
-                            <div className="flex items-center text-[#fff] text-[14px] font-normal">
-                                <div className="flex items-center"><MdOutlinePerson className="h-[30px] w-[30px]" /><p>2 Guest</p></div>
-                                <div className="mx-5"></div>
-                                <div className="flex items-center"><MdOutlineRoundedCorner className="h-[30px] w-[30px]"/><p>23FT</p></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-[100%]">
-            <div className="relative w-[100%]">
-              <div className="w-[100%] relative">
-                <img
-                  className="w-[100%]"
-                  src="http://avatarkaraoke.com/wp-content/uploads/2022/03/room-5-1024x664.jpeg"
-                />
-                <div className="absolute top-7 right-0 w-[90%] h-[80%]">
-                    <div className="absolute w-[140px] h-[32px] text-center bg-[#c19b76] text-white text-xs top-0 right-0 flex items-center justify-center">
-                        <p>F R O M 23 $</p>
-                    </div>
-                    <div className="absolute bottom-0 left-0">
-                        <div className="">
-                            <div className=" text-[#fff] text-[20px]">
-                                <p>Double Room</p>
-                            </div>
-                            <div className="flex items-center text-[#fff] text-[14px] font-normal">
-                                <div className="flex items-center"><MdOutlinePerson className="h-[30px] w-[30px]" /><p>2 Guest</p></div>
-                                <div className="mx-5"></div>
-                                <div className="flex items-center"><MdOutlineRoundedCorner className="h-[30px] w-[30px]"/><p>23FT</p></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </div>))
+          }
         </div>
       </div>
       <div className="w-[100%] max-h-[400px] flex items-center justify-center mt-36">
