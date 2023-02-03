@@ -1,10 +1,10 @@
 import React,{useState,useEffect} from "react";
 import { useQuery } from "@apollo/client";
-
+import BasicDateRangePicker from "../components/date-picker/range-date-picker";
 const DetailRoom = ()=>{
     return(
        <div>
-        <input className="bg-black text-white hidden" type='datetime-local'></input>
+        <BasicDateRangePicker></BasicDateRangePicker>
        </div>
     )
 }
