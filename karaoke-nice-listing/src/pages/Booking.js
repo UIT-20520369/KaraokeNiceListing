@@ -3,8 +3,10 @@ import { useQuery } from "@apollo/client";
 import BasicDateRangePicker from "../components/date-picker/range-date-picker";
 import TextField from "@mui/material/TextField";
 const BookingRoom = () => {
+    const [booking,setBooking]= useState({userId:'63d03047171882f3441b82be',deposit:5,request:"CHo thêm rượu mỗi 30p",roomId:'',total:30,checkIn:Date.now(),checkOut:Date.now()})
+    const [user,setUser] =useState({name:'',gender:'Nam',phone:'',address:''})
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center my-40">
       <div className="w-[20%] h-[800px  relative mr-14">
         <img
           src="http://avatarkaraoke.com/wp-content/uploads/2022/03/room-1-1024x664.jpeg"

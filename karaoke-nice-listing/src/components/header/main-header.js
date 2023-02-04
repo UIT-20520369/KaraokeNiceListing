@@ -15,14 +15,10 @@ const header = () =>{
             <div className="flex items-center bg-[#1C1C1D] h-20 justify-around">
                 <div className=" text-2xl text-white">Karaoke Nice</div>
                 <div className="flex items-center justify-evenly font-normal text-[#A3A3A3] w-[50%] ml-[-180px]">
-                    <div>Home</div>
-                    <div>About Us</div>
-                    <div>Listing Room</div>
-                    <div>Service</div>
-                    <div>Sale</div>
-                    <div>Contact Us</div>
+                    <div><a href="/">Home</a></div>
+                    <div><a href="/listing">Listing Room </a></div>
                 </div>
-                <div className=" w-24 h-6 bg-white text-black text-center text-sm font-medium align-middle "><p>Booking</p></div>
+                <div className=" w-24 h-6 bg-white text-black text-center text-sm font-medium align-middle "><a href="/booking">Booking</a></div>
             </div>
         </div>
     )

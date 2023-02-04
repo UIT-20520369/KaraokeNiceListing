@@ -38,7 +38,7 @@ const Home = () => {
         <SwiperSlide>
           <img
             className="w-[100%] h-[600px]"
-            src="https://maico-hub-record.ss-hn-1.bizflycloud.vn/apartment-resource/4bf30163-7954-4620-b8e9-804e7ed30b40/24-02-2022_0658/image/z3208124728819_57fa52088b8869efccba79dc68284800.jpg"
+            src="http://avatarkaraoke.com/wp-content/uploads/2022/03/room-1-1024x664.jpeg"
           />
           {/* <div className="absolute flex justify-center items-center">
               <div className=" flex flex-col items-center justify-center">
@@ -53,7 +53,15 @@ const Home = () => {
           <div>
             <img
               className="w-[100%] h-[600px]"
-              src="https://maico-hub-record.ss-hn-1.bizflycloud.vn/apartment-resource/4bf30163-7954-4620-b8e9-804e7ed30b40/24-02-2022_0658/image/z3208124728819_57fa52088b8869efccba79dc68284800.jpg"
+              src="http://avatarkaraoke.com/wp-content/uploads/2022/11/phonto-1536x1019.jpg"
+            />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div>
+            <img
+              className="w-[100%] h-[600px]"
+              src="http://avatarkaraoke.com/wp-content/uploads/2022/03/room-6-1024x664.jpeg"
             />
           </div>
         </SwiperSlide>
